@@ -27,6 +27,12 @@ const navItemAnimationVariants = {
     active: {
         backgroundColor: "#FFF",
         transition: { duration: .24 }
+    },
+    clicked: {
+        backgroundColor: "radial-gradient(circle, rgba(241, 255, 128, 1) 0 %, rgba(248, 255, 218, 0.8743698162858894) 12 %, rgba(255, 255, 255, 0) 15 %);"
+    },
+    inactive: {
+        backgroundColor: "#CCC"
     }
 }
 
@@ -101,6 +107,9 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
                             <NavbarLink href={item.url} id={item.text}
                                 variants={navItemAnimationVariants}
                                 whileHover="active"
+                                whileTap="clicked"
+                                initial="inactive"
+                                exit=""
                             >{item.text}
                             </NavbarLink>
                         </NavbarItem>
@@ -109,7 +118,8 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
             </NavbarContainer>
             <AnimatePresence>
                 {isOpen && (
-                    <FocusOverlay initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} />
+                    <FocusOverlay
+                        initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} exit={{ opacity: 0 }} />
                 )}
             </AnimatePresence>
         </>
