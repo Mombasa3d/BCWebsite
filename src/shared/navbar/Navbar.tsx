@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 class Item {
     url: string;
     text: string;
     icon?: string;
 
-    constructor(url: string, text: string, icon?: string){
+    constructor(url: string, text: string, icon?: string) {
         this.url = url;
         this.text = text;
         this.icon = icon;
@@ -23,12 +23,12 @@ const toolbarItems = [
     new Item('/game', 'Game Dev'),
 ]
 
-const navItemVariants = { 
+const navItemVariants = {
     active: {
         backgroundColor: "#FFF",
-        transition: {duration: .24}
+        transition: { duration: .24 }
     }
- }
+}
 
 const NavbarContainer = styled(motion.div)`
     height: 100vh;
@@ -42,6 +42,7 @@ const NavbarContainer = styled(motion.div)`
     flex-direction: column;
     overflow: hidden;
     border: none;
+    z-index: 3;
 `
 
 const NavbarList = styled.ul` 
@@ -76,21 +77,39 @@ const NavbarLink = styled(motion.a)`
     }
 `
 
+const FocusOverlay = styled(motion.div) <{ visible: boolean }>`
+    z-index: 2;
+    ${({ visible }) => visible ? "" : `display: none;`}
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0, 0.2);
+`
+
 // TODO: Store isOpen state in local storage
-export const Navbar: React.FC<{isOpen: boolean}> = ({isOpen}) => {
+// ? - May be able to just solve this using routing
+
+export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     return (
-        <NavbarContainer initial={{width: 0}} animate={{width: isOpen ? "12vw" : 0}} transition={{ type: 'tween'}}>
-            <NavbarList>
-                {toolbarItems.map(item => (
-                    <NavbarItem>
-                        <NavbarLink href={item.url} id={item.text} 
-                            variants={navItemVariants} 
-                            whileHover="active"
+        <>
+            <NavbarContainer initial={{ width: 0 }} animate={{ width: isOpen ? "12vw" : 0 }} transition={{ type: 'tween' }}>
+                <NavbarList>
+                    {toolbarItems.map(item => (
+                        <NavbarItem>
+                            <NavbarLink href={item.url} id={item.text}
+                                variants={navItemVariants}
+                                whileHover="active"
                             >{item.text}
-                        </NavbarLink>
-                    </NavbarItem>
-                ))}
-            </NavbarList>
-        </NavbarContainer>
+                            </NavbarLink>
+                        </NavbarItem>
+                    ))}
+                </NavbarList>
+            </NavbarContainer>
+            <AnimatePresence>
+                {isOpen && (
+                    <FocusOverlay visible={isOpen}></FocusOverlay>
+                )}
+            </AnimatePresence>
+        </>
     )
 }

@@ -10,7 +10,7 @@ const IconStyle = styled(motion.button)`
     position: fixed;
     top: 5vh;
     left: 2.8vw;
-    z-index: 2;
+    z-index: 4;
 `
 
 export const Icon: React.FC<{onClick: () => void}> = ({onClick}) => {

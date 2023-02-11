@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Navbar} from './shared/navbar/Navbar';
+import { Navbar } from './shared/navbar/Navbar';
 import { Icon } from './shared/icon/Icon'
-import { MainView } from './components/main-view/main-view';
+import { MainView } from './components/main-view/MainView';
 import styled from '@emotion/styled';
 
 const Root = styled.div`
@@ -15,8 +14,8 @@ function App() {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <Root>
-      <Icon onClick={()=> setIsOpen(!isOpen)}/>
-      <Navbar isOpen = {isOpen}></Navbar>
+      <Icon onClick={() => setIsOpen(!isOpen)} />
+      <Navbar isOpen={isOpen}></Navbar>
       <MainView></MainView>
     </Root>
   );
