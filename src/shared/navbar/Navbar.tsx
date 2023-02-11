@@ -23,7 +23,7 @@ const toolbarItems = [
     new Item('/game', 'Game Dev'),
 ]
 
-const navItemVariants = {
+const navItemAnimationVariants = {
     active: {
         backgroundColor: "#FFF",
         transition: { duration: .24 }
@@ -50,10 +50,10 @@ const NavbarList = styled.ul`
     padding: 0;
     width: 100%;
     `
-
+//TODO: Check for current page and create selected color state for nav buttons
 const NavbarItem = styled(motion.a)`
-    margin: 2vh 0;
-    height: 5vh;
+    margin: 0;
+    height: 7vh;
     min-height: 40px;
     width: 100%;
     display: flex;
@@ -77,13 +77,12 @@ const NavbarLink = styled(motion.a)`
     }
 `
 
-const FocusOverlay = styled(motion.div) <{ visible: boolean }>`
+const FocusOverlay = styled(motion.div)`
     z-index: 2;
-    ${({ visible }) => visible ? "" : `display: none;`}
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: rgba(0,0,0, 0.2);
+    background-color: #000;
 `
 
 // TODO: Store isOpen state in local storage
@@ -92,12 +91,15 @@ const FocusOverlay = styled(motion.div) <{ visible: boolean }>`
 export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     return (
         <>
-            <NavbarContainer initial={{ width: 0 }} animate={{ width: isOpen ? "12vw" : 0 }} transition={{ type: 'tween' }}>
+            <NavbarContainer
+                // initial={{ width: 0 }}
+                animate={{ width: isOpen ? "12vw" : 0 }}
+                transition={{ type: 'tween' }}>
                 <NavbarList>
                     {toolbarItems.map(item => (
                         <NavbarItem>
                             <NavbarLink href={item.url} id={item.text}
-                                variants={navItemVariants}
+                                variants={navItemAnimationVariants}
                                 whileHover="active"
                             >{item.text}
                             </NavbarLink>
@@ -107,7 +109,7 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
             </NavbarContainer>
             <AnimatePresence>
                 {isOpen && (
-                    <FocusOverlay visible={isOpen}></FocusOverlay>
+                    <FocusOverlay initial={{ opacity: 0 }} animate={{ opacity: 0.4 }} />
                 )}
             </AnimatePresence>
         </>
