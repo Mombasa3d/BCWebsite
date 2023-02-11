@@ -14,6 +14,7 @@ class Item {
     }
 }
 
+
 const toolbarItems = [
     new Item('/', 'Home'),
     new Item('/about', 'About'),
@@ -41,16 +42,6 @@ const NavbarContainer = styled(motion.div)`
     flex-direction: column;
     overflow: hidden;
     border: none;
-`
-
-const Icon = styled(motion.button)`
-    background-color: #FFF;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    position: fixed;
-    top: 5vh;
-    left: 4vw;
 `
 
 const NavbarList = styled.ul` 
