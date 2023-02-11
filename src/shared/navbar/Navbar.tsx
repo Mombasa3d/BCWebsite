@@ -2,6 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion';
 
+export const navbarStyles = {
+    // * Navbar colors
+    navbarContainer: "#2E506E",
+    navbarLink: "#ADD1F0",
+    navbarLinkText: "#FFF"
+}
+
 class Item {
     url: string;
     text: string;
@@ -13,7 +20,6 @@ class Item {
         this.icon = icon;
     }
 }
-
 
 const toolbarItems = [
     new Item('/', 'Home'),
@@ -32,7 +38,7 @@ const navItemAnimationVariants = {
         backgroundColor: "radial-gradient(circle, rgba(241, 255, 128, 1) 0 %, rgba(248, 255, 218, 0.8743698162858894) 12 %, rgba(255, 255, 255, 0) 15 %);"
     },
     inactive: {
-        backgroundColor: "#CCC"
+        backgroundColor: "{navbarStyles.navbarContainer}"
     }
 }
 
@@ -43,12 +49,13 @@ const NavbarContainer = styled(motion.div)`
     left: 0;
     justify-content: center;
     align-items: center;
-    background-color: #444;
+    background-color: ${navbarStyles.navbarContainer};
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border: none;
     z-index: 3;
+    box-shadow: 6px 0px 10px 0px rgba(0, 0, 0, 0.40);
 `
 
 const NavbarList = styled.ul` 
@@ -64,6 +71,7 @@ const NavbarItem = styled(motion.a)`
     width: 100%;
     display: flex;
     cursor: pointer;
+    background-color: ${navbarStyles.navbarContainer};
 `
 
 const NavbarLink = styled(motion.a)`
@@ -75,11 +83,12 @@ const NavbarLink = styled(motion.a)`
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: #CCC;
+    background-color: ${navbarStyles.navbarContainer};
+    color: ${navbarStyles.navbarLinkText};
     display: flex;
     align-items: center;
     a:link, a:visited, a:hover, a:focus {
-        color = #000
+        color = ${navbarStyles.navbarLinkText};
     }
 `
 
