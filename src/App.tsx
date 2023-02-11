@@ -20,7 +20,9 @@ function App() {
     <Router
       location={location}
       routes={[
-        { path: "/", element: <Home /> }
+        {
+          path: "/", element: <Home />
+        }
       ]}>
       <Root>
         <Icon onClick={() => setIsOpen(!isOpen)} />

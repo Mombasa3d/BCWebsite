@@ -32,13 +32,12 @@ const toolbarItems = [
 const navItemAnimationVariants = {
     active: {
         backgroundColor: "#FFF",
+        color: "#000",
         transition: { duration: .24 }
     },
-    clicked: {
-        backgroundColor: "radial-gradient(circle, rgba(241, 255, 128, 1) 0 %, rgba(248, 255, 218, 0.8743698162858894) 12 %, rgba(255, 255, 255, 0) 15 %);"
-    },
     inactive: {
-        backgroundColor: "{navbarStyles.navbarContainer}"
+        backgroundColor: navbarStyles.navbarContainer,
+        transition: { duration: .24 }
     }
 }
 
@@ -64,14 +63,13 @@ const NavbarList = styled.ul`
     width: 100%;
     `
 //TODO: Check for current page and create selected color state for nav buttons
-const NavbarItem = styled(motion.a)`
+const NavbarItem = styled(motion.li)`
     margin: 0;
     height: 7vh;
     min-height: 40px;
     width: 100%;
     display: flex;
     cursor: pointer;
-    background-color: ${navbarStyles.navbarContainer};
 `
 
 const NavbarLink = styled(motion.a)`
@@ -112,13 +110,12 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
                 transition={{ type: 'tween' }}>
                 <NavbarList>
                     {toolbarItems.map(item => (
-                        <NavbarItem>
+                        <NavbarItem key={item.text}>
                             <NavbarLink href={item.url} id={item.text}
                                 variants={navItemAnimationVariants}
                                 whileHover="active"
                                 whileTap="clicked"
                                 initial="inactive"
-                                exit=""
                             >{item.text}
                             </NavbarLink>
                         </NavbarItem>
