@@ -1,20 +1,28 @@
 import React from "react";
 import styled from '@emotion/styled'
 
-interface Content {
-    title: string;
-    image?: string;
-    category: string;
-    link: string;
-}
 
-const ContentBoxLarge = styled.div`
-    
+const ContentBoxStyled = styled.div`
+
 `
 
-export const ContentBox: React.FC<{ incomingContent: Content }> = ({ incomingContent }) => {
+const ContentTileStyled = styled.div`
+
+`
+
+//TODO: Need to get collection of content from DB
+// !: Need to be able to pull specific collections from the DB for different pages
+
+export const ContentTile: React.FC<{ incomingContent: Content }> = ({ incomingContent }) => {
     return (
-        <ContentBoxLarge>
-        </ContentBoxLarge>
+        <ContentTileStyled>    
+        </ContentTileStyled> 
+    )
+}
+
+export const ContentBox: React.FC = () => {
+    return (
+        <ContentBoxStyled>
+        </ContentBoxStyled>
     )
 }

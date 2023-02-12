@@ -7,7 +7,7 @@ export const navbarStyles = {
     // * Navbar colors
     navbarContainer: "#2E506E",
     navbarLink: "#ADD1F0",
-    navbarLinkText: "#FFF"
+    navbarLinkText: "#000"
 }
 
 class Item {
@@ -27,7 +27,7 @@ const toolbarItems = [
     new Item('/about', 'About'),
     new Item('/art', 'Art'),
     new Item('/code', 'Code'),
-    new Item('/game', 'Game Dev'),
+    new Item('/game', 'Games'),
 ]
 
 const navItemAnimationVariants = {
@@ -78,19 +78,20 @@ const NavbarLabel = styled(motion.div)`
     width: 100%;
     height: 100%;
     background-color: ${navbarStyles.navbarContainer};
-    color: ${navbarStyles.navbarLinkText};
     display: flex;
 `
 
 const NavbarLink = styled(Link)`
     width: 100%;
     height: 100%;
-    color: #FFF;
+    color: ${navbarStyles.navbarLinkText};
     text-decoration: none;
     font-size: 20px;
+    font-family: 'Mitr';
     align-items: center;
     display: flex;
     justify-content: center;
+
 `
 
 const FocusOverlay = styled(motion.div)`
@@ -121,7 +122,8 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
                                     whileTap="clicked"
                                     initial="inactive"
                                 >
-                                    <NavbarLink to={item.url}>{item.text}
+                                    <NavbarLink to={item.url}
+                                    >{item.text}
                                     </NavbarLink>
                                 </NavbarLabel>
                             </NavbarItem>
