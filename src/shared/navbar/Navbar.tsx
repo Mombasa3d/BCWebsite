@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled'
 import { AnimatePresence, motion } from 'framer-motion';
+import { Link } from '@tanstack/react-location';
 
 export const navbarStyles = {
     // * Navbar colors
@@ -72,22 +73,24 @@ const NavbarItem = styled(motion.li)`
     cursor: pointer;
 `
 
-const NavbarLink = styled(motion.a)`
-    text-decoration: none;
-    font-size: 20px;
+const NavbarLabel = styled(motion.div)`
     position: relative;
-    z-index: 1;
-    white-space: nowrap;
     width: 100%;
     height: 100%;
-    justify-content: center;
     background-color: ${navbarStyles.navbarContainer};
     color: ${navbarStyles.navbarLinkText};
     display: flex;
+`
+
+const NavbarLink = styled(Link)`
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
     align-items: center;
-    a:link, a:visited, a:hover, a:focus {
-        color = ${navbarStyles.navbarLinkText};
-    }
+    display: flex;
+    justify-content: center;
 `
 
 const FocusOverlay = styled(motion.div)`
@@ -110,15 +113,19 @@ export const Navbar: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
                 transition={{ type: 'tween' }}>
                 <NavbarList>
                     {toolbarItems.map(item => (
-                        <NavbarItem key={item.text}>
-                            <NavbarLink href={item.url} id={item.text}
-                                variants={navItemAnimationVariants}
-                                whileHover="active"
-                                whileTap="clicked"
-                                initial="inactive"
-                            >{item.text}
-                            </NavbarLink>
-                        </NavbarItem>
+                        <AnimatePresence>
+                            <NavbarItem key={item.text}>
+                                <NavbarLabel id={item.text}
+                                    variants={navItemAnimationVariants}
+                                    whileHover="active"
+                                    whileTap="clicked"
+                                    initial="inactive"
+                                >
+                                    <NavbarLink to={item.url}>{item.text}
+                                    </NavbarLink>
+                                </NavbarLabel>
+                            </NavbarItem>
+                        </AnimatePresence>
                     ))}
                 </NavbarList>
             </NavbarContainer>
