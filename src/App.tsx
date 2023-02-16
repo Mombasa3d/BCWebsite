@@ -6,8 +6,6 @@ import { MainView } from './components/main-view/MainView';
 import styled from '@emotion/styled';
 import { Outlet, ReactLocation, Router } from '@tanstack/react-location';
 import { Home } from './pages/Home';
-import { DBSetTest, app, db } from './services/database/realtimeDB'
-import { doc } from 'firebase/firestore';
 import { Content, dbConvertToContent } from './components/content/content';
 
 const location = new ReactLocation();
@@ -26,7 +24,7 @@ function App() {
     id: crypto.randomUUID(),
     postDate: new Date().toDateString()
   }
-  DBSetTest(testContent)
+  // DBSetTest(testContent)
   return (
     <Router
       location={location}

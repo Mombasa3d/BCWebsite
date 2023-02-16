@@ -3,11 +3,12 @@ import styled from '@emotion/styled'
 import { getDatabase, onValue, ref } from "firebase/database";
 import { ContentTile } from "./ContentTile";
 import { Content } from "./content";
+import { db } from "../../services/database/FirebaseConfig"
 
 const ContentBoxStyled = styled.div`
 
 `
-const db = getDatabase();
+
 const tileRef = ref(db, 'content/');
 onValue(tileRef, (snapshot) => {
     const data = snapshot.val();
