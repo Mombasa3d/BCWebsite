@@ -7,6 +7,7 @@ Current Stack:
 - Typescript
 - Node
 - React incl. styled-components, framer-motion
+- Firebase Hosting/Realtime DB
 
 Feature Goals:
 - WebGL rendering for displaying 3d models
