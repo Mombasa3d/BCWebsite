@@ -6,7 +6,8 @@ import { MainView } from './components/main-view/MainView';
 import styled from '@emotion/styled';
 import { Outlet, ReactLocation, Router } from '@tanstack/react-location';
 import { Home } from './pages/Home';
-import { Content, dbConvertToContent } from './components/content/content';
+import { Content } from './components/content/content';
+import { DBSetTest } from './services/database/realtimeDB';
 
 const location = new ReactLocation();
 
@@ -17,14 +18,13 @@ const Root = styled.div`
 
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const testContent: Content = {
-    title: "test1",
-    image: "https://2e.aonprd.com/Images/Ancestries/Kobold01.png",
-    category: "testCategory",
-    id: crypto.randomUUID(),
-    postDate: new Date().toDateString()
-  }
-  // DBSetTest(testContent)
+  // const testContent: Content = {
+  //   title: "test2",
+  //   image: "https://img.finalfantasyxiv.com/lds/promo/h/A/eqkthVf5uqxgBzUv66zhucFFh4.png",
+  //   category: "testCategory2",
+  //   id: crypto.randomUUID(),
+  //   postDate: new Date().toDateString()
+  // }
   return (
     <Router
       location={location}

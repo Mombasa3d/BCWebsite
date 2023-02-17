@@ -17,18 +17,8 @@ export class Content {
     }
 }
 
-export const dbConvertToContent = {
-    toFirestore: (content: Content) => {
-        return {
-            title: content.title,
-            image: content.image,
-            category: content.category,
-            id: content.id,
-            postDate: content.postDate
-        };
-    },
-    fromFirestore: (snapshot: { data: (arg0: any) => any; }, options: any) => {
-        const data = snapshot.data(options);
-    }
+export function convertToContent(input: any): Content {
+    let tempContent = new Content(input.title, input.category, input.id, input.image);
+    return tempContent;
 }
 
