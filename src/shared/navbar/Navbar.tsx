@@ -73,24 +73,25 @@ const NavbarItem = styled(motion.li)`
     cursor: pointer;
 `
 
+
+const NavbarLink = styled(Link)`
+width: 100%;
+height: 100%;
+color: ${navbarStyles.navbarLinkText};
+text-decoration: none;
+font-size: 20px;
+font-family: 'Mitr';
+align-items: center;
+display: flex;
+justify-content: center;
+`
+
 const NavbarLabel = styled(motion.div)`
     position: relative;
     width: 100%;
     height: 100%;
     background-color: ${navbarStyles.navbarContainer};
     display: flex;
-`
-
-const NavbarLink = styled(Link)`
-    width: 100%;
-    height: 100%;
-    color: ${navbarStyles.navbarLinkText};
-    text-decoration: none;
-    font-size: 20px;
-    font-family: 'Mitr';
-    align-items: center;
-    display: flex;
-    justify-content: center;
 
 `
 
