@@ -3,7 +3,7 @@ import React from 'react';
 
 const Main = styled.div`
     width: 80vw;
-    background-color: #ADA;
+    background-color: rgb(59, 96, 100);
     height: 100vh;
     padding: 5vh 15vw;
 `

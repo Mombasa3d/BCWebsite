@@ -75,15 +75,15 @@ const NavbarItem = styled(motion.li)`
 
 
 const NavbarLink = styled(Link)`
-width: 100%;
-height: 100%;
-color: ${navbarStyles.navbarLinkText};
-text-decoration: none;
-font-size: 20px;
-font-family: 'Mitr';
-align-items: center;
-display: flex;
-justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: ${navbarStyles.navbarLinkText};
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Mitr';
+    align-items: center;
+    display: flex;
+    justify-content: center;
 `
 
 const NavbarLabel = styled(motion.div)`
