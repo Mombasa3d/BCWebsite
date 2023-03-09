@@ -9,12 +9,12 @@ import logoImg from "../assets/testlogo1.jpg"
 const IconStyle = styled(motion.button)`
     background-color: #FFF;
     background: url(${logoImg}) center/100% no-repeat;
-    width: 125px;
-    height: 125px;
-    border-radius: 100%;
+    background-size: cover;
+    width: 80x;
+    height: 100px;
     position: fixed;
-    top: 5vh;
-    left: 2.8vw;
+    top: 44vh;
+    left: 0;
     z-index: 4;
 `
 

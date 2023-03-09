@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from '@emotion/styled'
 import { Content } from "./content";
-import { GridLoader } from "react-spinners";
 
 const ContentTileStyled = styled.div<{ contentImg?: string }>`
-    height: 15vw;
-    width: 15vw;
+    height: 65vh;
+    width: 20vw;
     background: url(${({ contentImg }) => contentImg}) center/100% no-repeat;
-    border: 2px ridge;
+    background-size: cover;
     position: relative;
 `
 
@@ -39,10 +38,9 @@ const TileDateStyled = styled.h3`
 `
 
 export const ContentTile: React.FC<{ content: Content }> = ({ content }) => {
-    let [loading, setLoading] = useState(true);
     return (
         <ContentTileStyled contentImg={content.image}
-        loading= {() => <GridLoader />}>
+        >
             <TileBackgroundStyled>
                 <TileTitleStyled>{content.title}</TileTitleStyled>
                 <TileDateStyled>{content.postDate}</TileDateStyled>
